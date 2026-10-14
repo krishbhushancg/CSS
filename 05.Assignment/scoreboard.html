@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Scoreboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111827;
+            font-family: Arial, sans-serif;
+        }
+
+        .stadium {
+            width: min(95%, 524px);
+            aspect-ratio: 523 / 288;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 12px 7%;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(4, 17, 32, 0.8),
+                    rgba(9, 34, 52, 0.75) 55%,
+                    rgba(26, 50, 23, 0.95)
+                );
+
+            position: relative;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 9px;
+        }
+
+        .logo span {
+            font-size: 18px;
+        }
+
+        /* Both team scorecards */
+        .score-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .team {
+            flex: 1;
+            min-width: 0;
+            height: 133px;
+            border-radius: 8px;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .india {
+            background: rgba(0, 104, 210, 0.78);
+        }
+
+        .pakistan {
+            background: rgba(54, 177, 34, 0.85);
+        }
+
+        .team h1 {
+            font-size: clamp(22px, 5vw, 32px);
+        }
+
+        /* Ball scores */
+        .balls {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .balls span {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 1;
+            border-radius: 50%;
+            background: white;
+            color: #111;
+            font-size: 12px;
+            font-weight: bold;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team h3 {
+            font-size: 18px;
+        }
+
+        /* Bottom buttons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 8px;
+        }
+
+        .buttons div {
+            width: 38px;
+            height: 38px;
+            border: 2px solid white;
+            border-radius: 12px;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .edit {
+            background: #ffbb30;
+        }
+
+        .reset {
+            background: #f3232b;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 450px) {
+            .stadium {
+                width: 96%;
+                padding: 12px 4%;
+            }
+
+            .score-container {
+                gap: 12px;
+            }
+
+            .team {
+                height: 115px;
+            }
+
+            .balls {
+                gap: 2px;
+            }
+
+            .balls span {
+                width: 16px;
+                height: 16px;
+                font-size: 10px;
+            }
+
+            .team h3 {
+                font-size: 15px;
+            }
+
+            .buttons div {
+                width: 34px;
+                height: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stadium">
+
+        <div class="logo">
+            <span>🏏</span>
+            <div>
+                <p>SUPER</p>
+                <p>OVER</p>
+            </div>
+        </div>
+
+        <div class="score-container">
+
+            <div class="team india">
+                <h1>IND</h1>
+
+                <div class="balls">
+                    <span>4</span>
+                    <span>3</span>
+                    <span>2</span>
+                    <span>6</span>
+                    <span>6</span>
+                    <span>6</span>
+                </div>
+
+                <h3>27 / 0</h3>
+            </div>
+
+            <div class="team pakistan">
+                <h1>PAK</h1>
+
+                <div class="balls">
+                    <span>2</span>
+                    <span>4</span>
+                    <span>0</span>
+                    <span>3</span>
+                    <span>1</span>
+                    <span>4</span>
+                </div>
+
+                <h3>14 / 0</h3>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <div class="edit">🖊</div>
+            <div class="reset">⟲</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+* {
+    box-sizing: border-box;
+}
+
+.products {
+    display: flex;
+    width: 900px;
+    height: 640px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 20px;
+    margin: auto;
+}
+
+.product {
+    width: 286.67px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+.product img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.product strong {
+    margin-top: auto;
+}
+
+.product button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    
+    <section class="products">
+  <article class="product">
+    <img src="photos/shoe.jpg" alt="Running shoe">
+    <h3>Running Shoes</h3>
+    <p>Comfortable shoes for everyday running.</p>
+    <strong>₹1,999</strong>
+    <button>Buy Now</button>
+  </article>
+
+  <article class="product">
+    <img src="photos/bag.jpg" alt="Watch">
+    <h3>Smart Watch</h3>
+    <p>Track your daily activity and health goals.</p>
+    <strong>₹2,499</strong>
+    <button>Buy Now</button>
+  </article>
+
+  <article class="product">
+    <img src="photos/bag.jpg" alt="Backpack">
+    <h3>Travel Backpack</h3>
+    <p>A spacious backpack for your next trip.</p>
+    <strong>₹1,499</strong>
+    <button>Buy Now</button>
+  </article>
+
+  <article class="product">
+    <img src="photos/headphones.png" alt="Headphones">
+    <h3>Headphones</h3>
+    <p>Enjoy music with clear sound quality.</p>
+    <strong>₹999</strong>
+    <button>Buy Now</button>
+  </article>
+
+  <article class="product">
+    <img src="photos/keyboard.jpg" alt="Keyboard">
+    <h3>Mechanical Keyboard</h3>
+    <p>A responsive keyboard for work and gaming.</p>
+    <strong>₹3,499</strong>
+    <button>Buy Now</button>
+  </article>
+
+  <article class="product">
+    <img src="photos/mouse.jpg" alt="Mouse">
+    <h3>Wireless Mouse</h3>
+    <p>A compact mouse with wireless connectivity.</p>
+    <strong>₹799</strong>
+    <button>Buy Now</button>
+  </article>
+</section>
+
+</body>
+</html>
