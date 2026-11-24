@@ -1,342 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ludo Board</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .cont{
+            
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            margin-top: 100px;
+        }
 
-<style>
-* {
-    box-sizing: border-box;
-}
+        .top{
+            height: 40%;
+            display: flex;
+            width: 100%;
+            height: 40%;
+        }
 
-body {
-    margin: 0;
-    padding: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
+        .middle{
+            height: 20%;
+            display: flex;
+            height: 20%;
+            width: 100%;
+        }
 
-.board {
-    width: min(95vw, 450px);
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #333;
-    background: white;
-}
+        .bottom{
+            height: 40%;
+            border: 1px solid black;
+            display: flex;
+            height: 40%;
+            width: 100%;
+        }
 
-.row {
-    display: flex;
-    flex: 6;
-    min-height: 0;
-}
+        .redhome{
+            border: 2px solid red;
+            height: 100%;
+            width: 40%;
+        }
 
-.home {
-    flex: 6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .greenhome{
+            border: 2px green;
+            height: 100%;
+            width: 40%;
+        }
 
-.red { background: #e53935; }
-.green { background: #43a047; }
-.blue { background: #1e88e5; }
-.yellow { background: #fdd835; }
+        .yellowhome{
+            border: 2px yellow;
+            height: 100%;
+            width: 40%;
+        }
 
-.inner {
-    width: 68%;
-    aspect-ratio: 1;
-    background: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-evenly;
-    padding: 8px;
-    border-radius: 4px;
-}
+        .bluehome{
+            border: 2px blue;
+            height: 100%;
+            width: 40%;
+        }
 
-.token {
-    width: 38%;
-    aspect-ratio: 1;
-    border: 3px solid;
-    border-radius: 50%;
-    background: white;
-}
+        .pathup{
+            border: 1px solid black;
+            height: 100%;
+            width: 20%;
+            display: flex;
+        }
+        
+        .pathright{
+            border: 1px solid black;
+            height: 100%;
+            width: 40%;
+        }
 
-.red .token { border-color: #e53935; }
-.green .token { border-color: #26bd2e; }
-.blue .token { border-color: #1e88e5; }
-.yellow .token { border-color: #fdd835; }
 
-.track {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    min-height: 0;
-}
+        .pathleft{
+            border: 1px solid black;
+            height: 100%;
+            width: 40%;
+        }
 
-.track-row {
-    display: flex;
-    flex: 1;
-    min-height: 0;
-}
+        .pathbottom{
+            border: 1px solid black;
+            height: 100%;
+            width: 20%;
 
-.cell {
-    flex: 1;
-    min-width: 0;
-    min-height: 0;
-    border: 0.5px solid #bbb;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(8px, 2.5vw, 14px);
-    padding: 0;
-}
+        }
 
-.r { background: #ffcdd2; }
-.g { background: #c8e6c9; }
-.b { background: #bbdefb; }
-.y { background: #fff9c4; }
+        .gtoken{
+            border: 5px solid green;
+            background-color: white;
+            border-radius: 50%;
+            justify-content: space-around;
+            height: 40px;
+            width: 40px;
 
-.cell.r { background: #ffcdd2; color: #b71c1c; }
-.cell.g { background: #c8e6c9; color: #1b5e20; }
-.cell.b { background: #bbdefb; color: #0d47a1; }
-.cell.y { background: #fff9c4; color: #f57f17; }
+        }
 
-.middle {
-    display: flex;
-    flex: 3;
-    min-height: 0;
-}
+        .rtoken{
+            border: 5px solid red;
+            background-color: white;
+            border-radius: 50%;
+            justify-content: space-around;
+            height: 40px;
+            width: 40px;
+        }
 
-.center {
-    flex: 3;
-    aspect-ratio: 1;
-    position: relative;
-    overflow: hidden;
-    background: #fff;
-}
+        .ytoken{
+            border: 5px solid yellow;
+            background-color: white;
+            border-radius: 50%;
+            justify-content: space-around;
+            height: 40px;
+            width: 40px;
+        }
 
-.triangle {
+        .btoken{
+            border: 5px solid blue;
+            background-color: white;
+            border-radius: 50%;
+            justify-content: space-around;
+            height: 40px;
+            width: 40px;
+        }
+        
+        .redb{
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            border: 30px solid red;
+        }
+
+        .greenb{
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            border: 30px solid green;
+        }
+
+        .blueb{
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            border: 30px solid blue;
+        }
+
+        .yellowb{
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            border: 30px solid yellow;
+        }
+
+        .one{
+            display: flex;
+            margin: auto;
+            gap: 20px;
+        }
+
+        .two{
+            display: flex;
+            margin: auto;
+            gap: 20px;
+        }
+
+
+        .centre{
+            height: 100%;
+            width: 100%;
+            position: relative
+        }
+
+        .bluepath{
+            border: 2px solid black;
+        }
+
+
+        .pehla{
+            border: 1px solid black;
+            width: 33px;
+            height: 33px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .start{
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .end{
+            display: flex;
+        }
+
+        .red{
+            background-color: red;
+        }
+
+        .blue{
+            background-color: blue;
+        }
+
+        .yellow{
+            background-color: yellow;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+        .all{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+.red1{
+    clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+    width: inherit;
+    height: inherit;
+    background-color: red;
     position: absolute;
-    width: 50%;
-    height: 50%;
 }
 
-.tr {
-    top: 0;
-    left: 0;
-    background: #e53935;
-    clip-path: polygon(0 0, 0 100%, 50% 50%);
+.green1{
+    clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
+    width: inherit;
+    height: inherit;
+    background-color: green;
+    position: absolute;
 }
 
-.tg {
-    top: 0;
-    right: 0;
-    background: #43a047;
-    clip-path: polygon(0 0, 100% 0, 50% 50%);
+.yellow1{
+    clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+    width: inherit;
+    height: inherit;
+    background-color: yellow;
+    position: absolute;
 }
 
-.tb {
-    bottom: 0;
-    left: 0;
-    background: #1e88e5;
-    clip-path: polygon(0 100%, 100% 100%, 50% 50%);
+.blue1{
+    clip-path: polygon(0% 100%, 50% 50%, 100% 100%);
+    width: inherit;
+    height: inherit;
+    background-color: blue;
+    position: absolute;
 }
 
-.ty {
-    bottom: 0;
-    right: 0;
-    background: #fdd835;
-    clip-path: polygon(100% 0, 100% 100%, 50% 50%);
-}
-</style>
+    </style>
 </head>
-
 <body>
-
-<div class="board">
-
-    <!-- TOP SECTION -->
-    <div class="row">
-        <div class="home red">
-            <div class="inner">
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
+    <div class="cont">
+        <div class="top">
+            <div class="redhome">
+                <div class="redb">
+                    <div class="all">  
+                    <div class="one"> 
+                    <div class="rtoken"></div>
+                    <div class="rtoken"></div>
+                    </div>
+                    <div class="two">
+                    <div class="rtoken"></div>
+                    <div class="rtoken"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pathup">
+                <div class="start">
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla green"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="start">
+                    <div class="pehla"></div>
+                    <div class="pehla green"></div>
+                    <div class="pehla green"></div>
+                    <div class="pehla green"></div>
+                    <div class="pehla green"></div>
+                    <div class="pehla green"></div>
+                </div>
+                <div class="start">
+                    <div class="pehla"></div>
+                    <div class="pehla green"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                </div>
+            </div>
+            <div class="greenhome">
+                <div class="greenb">
+                    <div class="all">  
+                    <div class="one"> 
+                    <div class="gtoken"></div>
+                    <div class="gtoken"></div>
+                    </div>
+                    <div class="two">
+                    <div class="gtoken"></div>
+                    <div class="gtoken"></div>
+                    </div>
+                    </div>
+                </div> 
             </div>
         </div>
 
-        <div class="track">
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
+
+
+
+
+        <div class="middle">
+            <div class="pathleft">
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla red"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla red"></div>
+                    <div class="pehla red"></div>
+                    <div class="pehla red"></div>
+                    <div class="pehla red"></div>
+                    <div class="pehla red"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla red"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                </div>
+                
             </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell g"></div>
-                <div class="cell"></div>
+            <div class="centre">
+                <div class="red1"></div>
+                <div class="green1"></div>
+                <div class="yellow1"></div>
+                <div class="blue1"></div>
             </div>
-            <div class="track-row">
-                <div class="cell g">★</div>
-                <div class="cell g"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell g"></div>
-                <div class="cell g">★</div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell g"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell g"></div>
-                <div class="cell"></div>
+            <div class="pathright">
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla yellow"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla yellow"></div>
+                    <div class="pehla yellow"></div>
+                    <div class="pehla yellow"></div>
+                    <div class="pehla yellow"></div>
+                    <div class="pehla yellow"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla yellow"></div>
+                    <div class="pehla"></div>
+                </div>
             </div>
         </div>
 
-        <div class="home green">
-            <div class="inner">
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
+
+
+        
+
+        <div class="bottom">
+            <div class="bluehome">
+                <div class="blueb">
+                    <div class="all">  
+                    <div class="one"> 
+                    <div class="btoken"></div>
+                    <div class="btoken"></div>
+                    </div>
+                    <div class="two">
+                    <div class="btoken"></div>
+                    <div class="btoken"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pathbottom">
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla blue"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla blue"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla blue"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla blue"></div>
+                    <div class="pehla blue"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla blue"></div>
+                    <div class="pehla blue"></div>
+                    <div class="pehla"></div>
+                </div>
+                <div class="end">
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                    <div class="pehla"></div>
+                </div>
+                
+            </div>
+            <div class="yellowhome">
+                <div class="yellowb">
+                    <div class="all">  
+                    <div class="one"> 
+                    <div class="ytoken"></div>
+                    <div class="ytoken"></div>
+                    </div>
+                    <div class="two">
+                    <div class="ytoken"></div>
+                    <div class="ytoken"></div>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- MIDDLE SECTION -->
-    <div class="middle">
-        <div class="track">
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell r"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell r">★</div>
-                <div class="cell r"></div>
-                <div class="cell r"></div>
-                <div class="cell r"></div>
-                <div class="cell r"></div>
-                <div class="cell r"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell r"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell r">★</div>
-                <div class="cell"></div>
-            </div>
-        </div>
-
-        <div class="center">
-            <div class="triangle tr"></div>
-            <div class="triangle tg"></div>
-            <div class="triangle tb"></div>
-            <div class="triangle ty"></div>
-        </div>
-
-        <div class="track">
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell y">★</div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell y"></div>
-                <div class="cell y"></div>
-                <div class="cell y"></div>
-                <div class="cell y"></div>
-                <div class="cell y"></div>
-                <div class="cell y">★</div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell y"></div>
-                <div class="cell"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BOTTOM SECTION -->
-    <div class="row">
-        <div class="home blue">
-            <div class="inner">
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
-            </div>
-        </div>
-
-        <div class="track">
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell b"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell b"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell b">★</div>
-                <div class="cell b"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell b"></div>
-                <div class="cell b">★</div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell b"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="track-row">
-                <div class="cell"></div>
-                <div class="cell "></div>
-                <div class="cell"></div>
-            </div>
-        </div>
-
-        <div class="home yellow">
-            <div class="inner">
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
-                <div class="token"></div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
 </body>
 </html>
